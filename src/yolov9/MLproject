@@ -1,0 +1,74 @@
+name: training_yolov9
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      workers:
+        description: Number of workers
+        type: string
+
+      device:
+        description: Cuda device or CPU
+        type: string
+        default: 0
+
+      batch-size:
+        description: batch_size
+        type: string
+        default: 16
+
+      data:
+        description: yaml file for data
+        type: string
+        default: data/coco.yaml
+      
+      img:
+        description: width of the size
+        type: string
+        default: 640
+
+      cfg:
+        description: config file of the model
+        type: string
+        default: models/detect/yolov9-c.yaml
+
+      weights:
+        description: weights
+        type: string
+        default: ""
+
+      name:
+        description: name of the model
+        type: string
+      
+      hyp:
+        description: hyper parameters config file
+        type: string
+        default: hyp.scratch-high.yaml
+
+      min-items:
+        description: minimum items
+        type: string
+        default: 0
+
+      epochs:
+        description: number of epochs
+        type: string
+
+      close-mosaic:
+        description: closeness of mosaic
+        type: string
+        default: 15
+
+      output_artifact:
+        description: Name for the output artifact
+        type: string
+
+    command: >-
+      python train_dual.py --workers {workers} \
+                    --device {device} \
+                    --name {name} \
+                    --epochs {epochs} \
+                    --output_artifact {output_artifact}

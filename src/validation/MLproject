@@ -1,0 +1,64 @@
+name: validation_yolov9
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      device:
+        description: Cuda device or CPU
+        type: string
+
+      batch-size:
+        description: batch_size
+        type: string
+        default: 32
+
+      data:
+        description: yaml file for data
+        type: string
+        default: data/coco.yaml
+      
+      img:
+        description: width of the size
+        type: string
+        default: 640
+
+      conf-thres:
+        description: confidence threshold
+        type: string
+        default: 0.001
+
+      weights:
+        description: weights
+        type: string
+
+      name:
+        description: name of the model
+        type: string
+      
+      iou-thres:
+        description: iou_threshold
+        type: string
+        default: 0.7
+
+      save-json:
+        description: save-json
+        type: string
+        default: True
+
+      input_artifact:
+        description: Name for the input artifact
+        type: string
+
+      project:
+        description: save the results
+        type: string
+      
+
+    command: >-
+      python val_dual.py --batch-size {batch-size} \
+                    --device {device} \
+                    --weights {weights} \
+                    --name {name} \
+                    --input_artifact {input_artifact} \
+                    --project {project} 

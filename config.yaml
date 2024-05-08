@@ -1,0 +1,7 @@
+main:
+  components_repository: "https://github.com/garg-sparsh/yolov9-end-to-end-pipeline#src"
+  # All the intermediate files will be copied to this directory at the end of the run.
+  # Set this to null if you are running in prod
+  project_name: YOLO_v9
+  experiment_name: development
+  steps: all

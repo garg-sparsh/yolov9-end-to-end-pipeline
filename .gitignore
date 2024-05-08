@@ -1,0 +1,12 @@
+artifacts/
+mlruns/
+wandb/
+**/artifacts/**
+**/mlruns/**
+**/wandb/**
+outputs/
+src/yolov9/coco/
+src/yolov9/runs/
+src/yolov9/results/
+src/yolov9/yolov9_model_dir/
+**__pycache__**
