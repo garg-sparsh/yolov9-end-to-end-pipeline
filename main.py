@@ -9,8 +9,8 @@ from omegaconf import DictConfig
 
 _steps = [
     "download",
-    "basic_cleaning",
-    "data_check",
+    "inference",
+    "data",
     "validation",
     "yolov9",
     # NOTE: We do not include this in the steps so it is not run by mistake.
@@ -60,8 +60,16 @@ def go(config: DictConfig):
                     "device": 0,
                     "weights": "yolov9-c",
                     "name" : "yolov9_c_640_val",
-                    "input_artifact": "yolov9_training:v0"
+                    "input_artifact": "yolov9_training:latest"
                 },
+            )
+
+        if "inference" in active_steps:
+            # Download file and load in W&B
+            _ = mlflow.run(
+                os.path.join(hydra.utils.get_original_cwd(), "src", "inference"),
+                "main",
+                version='main',
             )
 
         

@@ -1,0 +1,7 @@
+name: streamlit_demo
+conda_env: conda.yml
+
+entry_points:
+  main:
+    command: >-
+      streamlit run detect_dual.py
